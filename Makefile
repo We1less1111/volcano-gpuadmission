@@ -98,6 +98,13 @@ images:
 		docker buildx build -t "${IMAGE_PREFIX}/vc-$$name:$(TAG)" . -f ./installer/dockerfile/$$name/Dockerfile --output=type=${BUILDX_OUTPUT_TYPE} --platform ${DOCKER_PLATFORMS}; \
 	done
 
+images-scheduler:
+	docker buildx build -t "${IMAGE_PREFIX}/volcano-scheduler-gpu:${TAG}" . -f ./installer/dockerfile/scheduler/Dockerfile --output=type=${BUILDX_OUTPUT_TYPE} --platform ${DOCKER_PLATFORMS}; \
+# lxin12
+# make images DOCKER_PLATFORMS="linux/amd64" BUILDX_OUTPUT_TYPE=registry IMAGE_PREFIX=lxin12 TAG=v1.0.0` to push multi-platform
+
+# make images DOCKER_PLATFORMS="linux/amd64,linux/arm64" BUILDX_OUTPUT_TYPE=registry IMAGE_PREFIX=g-ubjg5602-docker.pkg.coding.net/iscas-system/containers TAG=v1.0.0` to push multi-platform
+
 generate-code:
 	./hack/update-gencode.sh
 

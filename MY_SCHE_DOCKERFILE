@@ -1,0 +1,3 @@
+FROM alpine:latest
+COPY ./_output/bin/vc-scheduler /vc-scheduler
+ENTRYPOINT ["/vc-scheduler"]

@@ -13,6 +13,7 @@
 # limitations under the License.
 
 FROM golang:1.20.1 AS builder
+RUN go env -w GOPROXY=https://goproxy.cn,direct
 WORKDIR /go/src/volcano.sh/
 ADD . volcano
 RUN cd volcano && make vc-scheduler

@@ -73,6 +73,8 @@ func (enqueue *Action) Execute(ssn *framework.Session) {
 			}
 			klog.V(5).Infof("Added Job <%s/%s> into Queue <%s>", job.Namespace, job.Name, job.Queue)
 			jobsMap[job.Queue].Push(job)
+		} else {
+			klog.V(5).Infof("job error status is %s", job.PodGroup.Status.Phase)
 		}
 	}
 
